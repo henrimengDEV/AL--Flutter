@@ -1,0 +1,4 @@
+enum LoadingActions {
+  Loading,
+  NotLoading
+}
