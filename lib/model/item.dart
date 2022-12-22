@@ -8,5 +8,4 @@ class Item {
     required this.expandedValue,
     this.isExpanded = false,
   });
-
 }
