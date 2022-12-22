@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_first_app/model/Item.dart';
+import 'package:my_first_app/model/item.dart';
 import 'package:my_first_app/widgets/stateless/default_channel_button.dart';
 
 class DefaultAccordionChannels extends StatefulWidget {

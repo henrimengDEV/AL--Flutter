@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:my_first_app/redux/app_state.dart';
 import 'package:my_first_app/redux/app_state_reducer.dart';
-import 'package:my_first_app/screens/slack.dart';
+import 'package:my_first_app/slack.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 
@@ -26,40 +26,43 @@ void main() async {
 class MyApp extends StatelessWidget {
   final store = Store<AppState>(
     appReducer,
-    initialState: AppState(),
+    initialState: const AppState.initialState(),
     middleware: [thunkMiddleware],
   );
+
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return StoreProvider<AppState>(
       store: store,
       child: MaterialApp(
-          theme: ThemeData(
-            // const TextStyle(fontWeight: FontWeight.w400)
-            textButtonTheme: TextButtonThemeData(
-                style: ButtonStyle(
-                    alignment: Alignment.centerLeft,
-                    foregroundColor: MaterialStateProperty.all<Color>(Colors.black87),
-                    textStyle: MaterialStateProperty.all(
-                      const TextStyle(fontWeight: FontWeight.w400),
-                    ))),
-            outlinedButtonTheme: OutlinedButtonThemeData(
-                style: ButtonStyle(
-                    alignment: Alignment.centerLeft,
-                    foregroundColor: MaterialStateProperty.all<Color>(Colors.black87),
-                    textStyle: MaterialStateProperty.all(
-                      const TextStyle(fontWeight: FontWeight.w400),
-                    ))),
-            textTheme: const TextTheme(
-              headline1: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.green,
-              ),
+        theme: ThemeData(
+          // const TextStyle(fontWeight: FontWeight.w400)
+          textButtonTheme: TextButtonThemeData(
+              style: ButtonStyle(
+                  alignment: Alignment.centerLeft,
+                  foregroundColor: MaterialStateProperty.all<Color>(Colors.black87),
+                  textStyle: MaterialStateProperty.all(
+                    const TextStyle(fontWeight: FontWeight.w400),
+                  ))),
+          outlinedButtonTheme: OutlinedButtonThemeData(
+              style: ButtonStyle(
+                  alignment: Alignment.centerLeft,
+                  foregroundColor: MaterialStateProperty.all<Color>(Colors.black87),
+                  textStyle: MaterialStateProperty.all(
+                    const TextStyle(fontWeight: FontWeight.w400),
+                  ))),
+          textTheme: const TextTheme(
+            headline1: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.green,
             ),
           ),
-          home: Slack()),
+        ),
+        home: const Slack(),
+      ),
     );
   }
 }
