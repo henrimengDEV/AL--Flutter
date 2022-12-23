@@ -37,3 +37,5 @@ StoreConnector
 > enables the external API call through the middleware
 - *Intl*: 
 > enables formatting of the time data received from the API
+
+.
