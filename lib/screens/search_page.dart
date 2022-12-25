@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_first_app/widgets/stateless/default_channel_button.dart';
+import 'package:my_first_app/widgets/slack/stateless/slack_button.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -8,8 +8,8 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        DefaultChannelButton(icon: Icons.contact_page_outlined, label: "Parcourir les membres"),
-        DefaultChannelButton(icon: Icons.manage_search, label: "Parcourir les canaux"),
+        SlackButton(icon: Icons.contact_page_outlined, label: "Parcourir les membres"),
+        SlackButton(icon: Icons.manage_search, label: "Parcourir les canaux"),
         SizedBox(
           height: 34,
           child: Align(
@@ -20,10 +20,10 @@ class SearchPage extends StatelessWidget {
             ),
           ),
         ),
-        DefaultChannelButton(icon: Icons.access_time_outlined, label: "de:@Elise Tronel"),
-        DefaultChannelButton(icon: Icons.access_time_outlined, label: "dans: J+3"),
-        DefaultChannelButton(icon: Icons.access_time_outlined, label: "dans: questionnaire"),
-        DefaultChannelButton(icon: Icons.access_time_outlined, label: "dans: QUESTIONNAIRE"),
+        SlackButton(icon: Icons.access_time_outlined, label: "de:@Elise Tronel"),
+        SlackButton(icon: Icons.access_time_outlined, label: "dans: J+3"),
+        SlackButton(icon: Icons.access_time_outlined, label: "dans: questionnaire"),
+        SlackButton(icon: Icons.access_time_outlined, label: "dans: QUESTIONNAIRE"),
         SizedBox(
           height: 34,
           child: Align(
@@ -34,10 +34,10 @@ class SearchPage extends StatelessWidget {
             ),
           ),
         ),
-        DefaultChannelButton(icon: Icons.add_box_outlined, label: "de:@Elise Tronel"),
-        DefaultChannelButton(icon: Icons.add_box_outlined, label: "dans: J+3"),
-        DefaultChannelButton(icon: Icons.add_box_outlined, label: "dans: questionnaire"),
-        DefaultChannelButton(icon: Icons.add_box_outlined, label: "dans: QUESTIONNAIRE"),
+        SlackButton(icon: Icons.add_box_outlined, label: "de:@Elise Tronel"),
+        SlackButton(icon: Icons.add_box_outlined, label: "dans: J+3"),
+        SlackButton(icon: Icons.add_box_outlined, label: "dans: questionnaire"),
+        SlackButton(icon: Icons.add_box_outlined, label: "dans: QUESTIONNAIRE"),
       ],
     );
   }

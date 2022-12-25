@@ -37,5 +37,12 @@ StoreConnector
 > enables the external API call through the middleware
 - *Intl*: 
 > enables formatting of the time data received from the API
+- *Firebase*:
+> TODO
 
-.
+
+## Redux
+> Il existe différentes manière d'utiliser Redux
+> Dans notre projet nous allons privilégier l'utilisation du StoreProvider
+> Pour récupérer l'état du store : `StoreProvider.of<AppState>(context).state`
+> Pour changer l'état du store : `StoreProvider.of<AppState>(context).dispatch`

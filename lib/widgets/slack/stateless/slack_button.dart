@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-class DefaultChannelButton extends StatelessWidget {
+class SlackButton extends StatelessWidget {
   final IconData icon;
   final String label;
   final double? height;
-  final double? iconHeight;
+  final double iconHeight;
 
-  const DefaultChannelButton({
+  const SlackButton({
     Key? key,
     required this.icon,
     required this.label,
     this.height,
-    this.iconHeight,
+    this.iconHeight = 18,
   }) : super(key: key);
 
   @override

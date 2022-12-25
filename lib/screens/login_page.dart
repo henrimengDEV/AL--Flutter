@@ -5,6 +5,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:my_first_app/model/customer.dart';
 import 'package:my_first_app/redux/app_state.dart';
 import 'package:my_first_app/redux/customer/customer_update.dart';
+import 'package:redux/redux.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -52,25 +53,24 @@ class _LoginPageState extends State<LoginPage> {
               ],
             ),
           ),
-          TextButton(
-            style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white)),
-            onPressed: () => {
-              FirebaseAuth.instance
-                  .signInWithEmailAndPassword(
-                    email: _email,
-                    password: _password,
-                  )
-                  .then((value) => {
-                        StoreProvider.of<AppState>(context).dispatch(CustomerUpdate(
-                          updatedCustomer: Customer(
-                            email: _email,
-                            password: _password,
-                            isConnected: true
-                          ),
-                        ))
-                      }),
-            },
-            child: Text("Sign In"),
+          StoreConnector<AppState, Store<AppState>>(
+            converter: (store) => store,
+            builder: (_, state) => TextButton(
+              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white)),
+              onPressed: () => {
+                FirebaseAuth.instance
+                    .signInWithEmailAndPassword(
+                      email: _email,
+                      password: _password,
+                    )
+                    .then((value) => {
+                          state.dispatch(CustomerUpdate(
+                            updatedCustomer: Customer(email: _email, isConnected: true),
+                          ))
+                        }),
+              },
+              child: Text("Sign In"),
+            ),
           ),
           TextButton(
             style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white)),

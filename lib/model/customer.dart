@@ -1,21 +1,21 @@
 class Customer {
   final String email;
-  final String password;
+  final String imgUrl;
   final bool isConnected;
 
-  Customer({
+  const Customer({
     this.email = "",
-    this.password = "",
+    this.imgUrl = "",
     this.isConnected = false,
   });
 
   const Customer.initialState()
       : email = "",
-        password = "",
+        imgUrl = "",
         isConnected = false;
 
   @override
   String toString() {
-    return 'User{email: $email, password: $password, isConnected: $isConnected}';
+    return 'User{email: $email, imgUrl: $imgUrl, isConnected: $isConnected}';
   }
 }

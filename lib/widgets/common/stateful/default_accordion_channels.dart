@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:my_first_app/model/item.dart';
-import 'package:my_first_app/widgets/stateless/default_channel_button.dart';
+import 'package:my_first_app/redux/app_state.dart';
+import 'package:my_first_app/widgets/common/stateless/default_channel_button_2.dart';
 
 class DefaultAccordionChannels extends StatefulWidget {
   const DefaultAccordionChannels({Key? key}) : super(key: key);
@@ -45,32 +47,9 @@ class _DefaultAccordionChannelsState extends State<DefaultAccordionChannels> {
                   );
                 },
                 body: Column(
-                  children: [
-                    DefaultChannelButton(
-                      icon: Icons.account_box,
-                      label: "Henri",
-                    ),
-                    DefaultChannelButton(
-                      icon: Icons.account_box_outlined,
-                      label: "Adrien",
-                    ),
-                    DefaultChannelButton(
-                      icon: Icons.account_box,
-                      label: "Benjamin",
-                    ),
-                    DefaultChannelButton(
-                      icon: Icons.account_box,
-                      label: "Henri",
-                    ),
-                    DefaultChannelButton(
-                      icon: Icons.account_box_outlined,
-                      label: "Adrien",
-                    ),
-                    DefaultChannelButton(
-                      icon: Icons.account_box,
-                      label: "Benjamin",
-                    )
-                  ],
+                  children: StoreProvider.of<AppState>(context).state.customers.map((it) =>
+                      DefaultChannelButton2(customer: it)
+                  ).toList(),
                 ))))
             .toList(),
       ),

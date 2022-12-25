@@ -1,36 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:my_first_app/widgets/stateless/default_button_outline.dart';
-import 'package:my_first_app/widgets/stateless/default_button_with_widget.dart';
-import 'package:my_first_app/widgets/stateless/default_channel_button.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:my_first_app/constants/styles.dart';
+import 'package:my_first_app/model/customer.dart';
+import 'package:my_first_app/redux/app_state.dart';
+import 'package:my_first_app/widgets/common/stateless/default_button_outline.dart';
+import 'package:my_first_app/widgets/common/stateless/default_button_with_widget.dart';
+import 'package:my_first_app/widgets/slack/stateless/slack_avatar.dart';
+import 'package:my_first_app/widgets/slack/stateless/slack_button.dart';
+import 'package:my_first_app/widgets/slack/stateless/slack_button_avatar.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Customer customer = StoreProvider.of<AppState>(context).state.customer;
+
     return Column(
       children: [
-        DefaultButtonWithWidget(
-          icon: Icons.account_box,
-          label: Column(
-            children: const [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Henri",
-                  style: TextStyle(fontWeight: FontWeight.w900),
+        SlackButtonAvatar(
+          imgUrl: customer.imgUrl,
+          imgSize: 60,
+          gap: 15,
+          isConnected: customer.isConnected,
+          child: DefaultTextStyle(
+            style: const TextStyle(fontSize: 15, color: Colors.black),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  customer.email,
+                  style: const TextStyle(fontWeight: FontWeight.w900),
                 ),
-              ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
+                const Text(
                   "Disponible",
-                  style: TextStyle(fontWeight: FontWeight.w200),
+                  style: subText,
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-          iconHeight: 75,
         ),
         SizedBox(height: 13),
         DefaultButtonOutline(
@@ -38,7 +46,7 @@ class ProfilePage extends StatelessWidget {
           label: "Mettre à jour votre status",
         ),
         SizedBox(height: 13),
-        DefaultChannelButton(
+        SlackButton(
           icon: Icons.notifications_off_outlined,
           label: "Suspendre les notifications",
         ),
@@ -55,19 +63,19 @@ class ProfilePage extends StatelessWidget {
           ),
         ),
         Divider(),
-        DefaultChannelButton(
+        SlackButton(
           icon: Icons.save_alt,
           label: "Éléments enregistrés",
         ),
-        DefaultChannelButton(
+        SlackButton(
           icon: Icons.person_outline,
           label: "Afficher le profil",
         ),
-        DefaultChannelButton(
+        SlackButton(
           icon: Icons.phone_android,
           label: "Notifications",
         ),
-        DefaultChannelButton(
+        SlackButton(
           icon: Icons.room_preferences_outlined,
           label: "Préférences",
         ),

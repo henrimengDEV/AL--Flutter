@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:my_first_app/constants/colors.dart';
 import 'package:my_first_app/redux/app_state.dart';
 import 'package:my_first_app/redux/app_state_reducer.dart';
 import 'package:my_first_app/slack.dart';
@@ -38,7 +39,12 @@ class MyApp extends StatelessWidget {
       store: store,
       child: MaterialApp(
         theme: ThemeData(
-          // const TextStyle(fontWeight: FontWeight.w400)
+          appBarTheme: const AppBarTheme(
+            backgroundColor: slackPurple,
+          ),
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(
+            backgroundColor: slackPurple,
+          ),
           textButtonTheme: TextButtonThemeData(
               style: ButtonStyle(
                   alignment: Alignment.centerLeft,

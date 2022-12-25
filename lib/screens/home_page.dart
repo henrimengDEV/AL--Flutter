@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:my_first_app/redux/app_state.dart';
-import 'package:my_first_app/widgets/stateful/default_accordion_channels.dart';
-import 'package:my_first_app/widgets/stateless/default_channel_button.dart';
-import 'package:my_first_app/widgets/stateless/search_bar.dart';
+import 'package:my_first_app/widgets/common/stateful/accordion_canals.dart';
+import 'package:my_first_app/widgets/common/stateful/default_accordion_channels.dart';
+import 'package:my_first_app/widgets/slack/stateless/slack_button.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,13 +10,12 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SearchBar(),
         SizedBox(height: 10),
-        DefaultChannelButton(
+        SlackButton(
           icon: Icons.message_outlined,
           label: "Fils de discussion",
         ),
-        DefaultChannelButton(
+        SlackButton(
           icon: Icons.send_outlined,
           label: "Brouillons et envoyés",
         ),
@@ -26,7 +23,7 @@ class HomePage extends StatelessWidget {
         Divider(
           height: 2,
         ),
-        DefaultAccordionChannels(),
+        AccordionCanals(),
         Divider(
           height: 2,
         ),
@@ -34,16 +31,10 @@ class HomePage extends StatelessWidget {
         Divider(
           height: 2,
         ),
-        DefaultChannelButton(
+        SlackButton(
           icon: Icons.add,
           label: "Ajouter des collaborateurs",
         ),
-        StoreConnector<AppState, String>(
-          converter: (store) => store.state.isLoading.toString(),
-          builder: (_, state) {
-            return Text(state);
-          },
-        )
       ],
     );
     ;

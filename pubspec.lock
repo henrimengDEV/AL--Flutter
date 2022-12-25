@@ -240,6 +240,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.7.0"
+  redux_remote_devtools:
+    dependency: "direct main"
+    description:
+      name: redux_remote_devtools
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.0"
   redux_thunk:
     dependency: "direct main"
     description:
@@ -252,6 +259,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  socketcluster_client:
+    dependency: transitive
+    description:
+      name: socketcluster_client
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.0"
   source_span:
     dependency: transitive
     description:

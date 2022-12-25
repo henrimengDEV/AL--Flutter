@@ -10,6 +10,8 @@ AppState appReducer(AppState prev, dynamic action) {
     customer: customerReducer(prev.customer, action),
     location: prev.location,
     time: prev.time,
+    messages: prev.messages,
+    customers: prev.customers,
   );
 
   print('$state');

@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:my_first_app/constants/colors.dart';
 import 'package:my_first_app/redux/app_state.dart';
 import 'package:my_first_app/redux/loading/loading_actions.dart';
+import 'package:my_first_app/screens/conversation_page.dart';
 import 'package:my_first_app/screens/home_page.dart';
 import 'package:my_first_app/screens/login_page.dart';
 import 'package:my_first_app/screens/messages_page.dart';
 import 'package:my_first_app/screens/profile_page.dart';
 import 'package:my_first_app/screens/search_page.dart';
-import 'package:my_first_app/widgets/stateless/my_bottom_navigation_bar.dart';
-import 'package:my_first_app/widgets/stateless/search_bar.dart';
+import 'package:my_first_app/widgets/common/stateless/my_bottom_navigation_bar.dart';
+import 'package:my_first_app/widgets/common/stateless/search_bar.dart';
 
 class Slack extends StatefulWidget {
   const Slack({Key? key}) : super(key: key);
@@ -36,7 +38,13 @@ class _SlackState extends State<Slack> {
             ? const LoginPage()
             : Scaffold(
                 appBar: AppBar(
-                  title: const SearchBar(),
+                  title: _selectedIndex == 3
+                      ? const SearchBar()
+                      : Text(
+                          _getTitle(_selectedIndex),
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                  centerTitle: false,
                 ),
                 body: Container(
                   margin: const EdgeInsets.all(8),
@@ -46,14 +54,15 @@ class _SlackState extends State<Slack> {
                   selectedIndex: _selectedIndex,
                   onItemTapped: _onItemTapped,
                 ),
-                floatingActionButton: StoreConnector<AppState, VoidCallback>(
-                  converter: (store) => () => {
-                        store.state.isLoading
-                            ? store.dispatch(LoadingActions.NotLoading)
-                            : store.dispatch(LoadingActions.Loading)
-                      },
-                  builder: (_, callback) => FloatingActionButton(
-                    onPressed: callback,
+                floatingActionButton: Visibility(
+                  visible: _selectedIndex != 3 && _selectedIndex != 4,
+                  child: FloatingActionButton(
+                    onPressed: () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const ConversationPage()),
+                      ),
+                    },
                     child: const Icon(Icons.edit),
                   ),
                 ),
@@ -66,5 +75,18 @@ class _SlackState extends State<Slack> {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  String _getTitle(int index) {
+    switch (index) {
+      case 1:
+        return "Messages directs";
+      case 2:
+        return "Mentions et réactions";
+      case 4:
+        return "Vous";
+      default:
+        return "ESGI";
+    }
   }
 }
