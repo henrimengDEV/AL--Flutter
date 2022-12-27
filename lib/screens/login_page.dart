@@ -47,6 +47,7 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Text("Password"),
                 CupertinoTextField(
+                  obscureText: true,
                   placeholder: "Your password",
                   onChanged: (value) => _password = value,
                 ),
