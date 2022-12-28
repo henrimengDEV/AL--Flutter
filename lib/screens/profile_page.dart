@@ -5,7 +5,6 @@ import 'package:my_first_app/model/customer.dart';
 import 'package:my_first_app/redux/app_state.dart';
 import 'package:my_first_app/widgets/common/stateless/default_button_outline.dart';
 import 'package:my_first_app/widgets/common/stateless/default_button_with_widget.dart';
-import 'package:my_first_app/widgets/slack/stateless/slack_avatar.dart';
 import 'package:my_first_app/widgets/slack/stateless/slack_button.dart';
 import 'package:my_first_app/widgets/slack/stateless/slack_button_avatar.dart';
 

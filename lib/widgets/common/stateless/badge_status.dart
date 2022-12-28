@@ -18,10 +18,12 @@ class BadgeStatus extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: color,
-        border: Border.fromBorderSide(BorderSide(
-          color: borderColor,
-          width: 2,
-        )),
+        border: Border.fromBorderSide(
+          BorderSide(
+            color: borderColor,
+            width: 2,
+          ),
+        ),
       ),
     );
   }

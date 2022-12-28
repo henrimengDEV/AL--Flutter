@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
+      children: const [
         SizedBox(height: 10),
         SlackButton(
           icon: Icons.message_outlined,
